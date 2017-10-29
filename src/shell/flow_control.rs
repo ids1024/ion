@@ -143,7 +143,8 @@ pub struct Function {
     statements:  Vec<Statement>,
 }
 
-pub(crate) enum FunctionError {
+#[derive(Debug)]
+pub enum FunctionError {
     InvalidArgumentCount,
     InvalidArgumentType(Primitive, String),
 }
@@ -165,7 +166,7 @@ impl Function {
 
     pub(crate) fn get_description<'a>(&'a self) -> Option<&'a String> { self.description.as_ref() }
 
-    pub(crate) fn execute(self, shell: &mut Shell, args: &[&str]) -> Result<(), FunctionError> {
+    pub fn execute(self, shell: &mut Shell, args: &[&str]) -> Result<(), FunctionError> {
         if args.len() - 1 != self.args.len() {
             return Err(FunctionError::InvalidArgumentCount);
         }

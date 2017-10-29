@@ -9,7 +9,7 @@ pub(crate) mod colors;
 pub(crate) mod directory_stack;
 pub mod flags;
 pub(crate) mod plugins;
-pub(crate) mod flow_control;
+pub mod flow_control;
 pub(crate) mod signals;
 pub mod status;
 pub mod variables;
